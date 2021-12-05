@@ -15,15 +15,17 @@ tlink /3 dos32a kernel,DOS4GW.exe
 From this repository (in Dosbox):
 
 ```
-make.bat
+> make.bat
 ```
 
 :monocle_face:
 
 With Docker:
+Just run the following commands in the root directory of the repository. The container will launch a headless dosbox for building dos32a with tasm/tlink. After it finishes, a DOS32ANG.EXE will appear in the root directory.
 
 ```
-docker build
+$ docker build -t dos32a .
+$ docker run -it -v ${PWD}/:/app/ dos32a --rm dosbox.sh
 ```
 
 :sunglasses:
