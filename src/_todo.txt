@@ -1,0 +1,9 @@
+- dos32a\text\client
+	* int21h.asm: Change CMP with a Jump table. Maybe also int10h.asm and int33h.asm.
+
+
+- pctest detects 8.00 as 7.1
+
+- Write the press release of 8.00 dev, send to freedos, openwatcom, ...
+
+	
