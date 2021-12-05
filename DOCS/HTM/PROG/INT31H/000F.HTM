@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.13 - DPMI function 000Fh
+- Set Multiple Descriptors</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Copies one or more descriptors
+from a client buffer into the descriptor table.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = 000Fh<BR>
+<B>CX</B> = number of descriptors to copy<BR>
+<B>ES:EDI</B>= selector:offset of a buffer in the following format:</FONT></P>
+
+<P><TABLE WIDTH="359" HEIGHT="195" BORDER="0" CELLSPACING="0" CELLPADDING=
+"4">
+<TR>
+<TD HEIGHT="32" BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Offset</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Length</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Contents</FONT></B></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">00h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Selector #1 (set by client)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">02h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Descriptor #1 (returned
+by host)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0Ah</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Selector #2 (set by
+client)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0Ch</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Descriptor #2 (returned
+by host)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">. . .</FONT></TD>
+<TD BGCOLOR="#e4e4e4"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">. . .</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">. . .</FONT></TD></TR>
+</TABLE>
+</TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed:<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code<BR>
+<B>CX</B> = number of descriptors successfully copied</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8021h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - invalid value (access rights/type
+  bytes invalid)<BR>
+  <B>8022h</B> - invalid selector<BR>
+  <B>8025h</B> - invalid linear address (descriptor references a linear address
+  range outside that allowed for DPMI clients)</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) If an error occurs
+  because of an invalid selector or descriptor, the function returns the
+  number of descriptors which were successfully copied in CX. All of the
+  descriptors which were copied prior to the one that failed are valid. All
+  descriptors from the invalid entry to the end of the table are not updated.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) The descriptor's access
+  rights/type byte (byte 5) follows the same format and restrictions as the
+  access rights/type parameter (in CL) for the Set Descriptor Access Rights
+  DPMI function 0009h, and the descriptor's extended access rights/type byte
+  (byte 6) follows the same format and restrictions as the extended access
+  rights/type parameter (in CH) for the same function, except the low-order
+  4 bits (marked &quot;reserved&quot;) are used to set the upper 4 bits of
+  the descriptor's limit.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) DOS/32 Advanced DPMI
+  and DPMI 1.0 hosts will reload any segment registers which contain the
+  selector specified in register BX. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

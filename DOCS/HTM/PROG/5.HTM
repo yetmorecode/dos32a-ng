@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference [Int33h Overview]</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">5.0 - Extended Mouse functions
+- Overview<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Mouse functions that have
+been extended and listed below are available through software interrupt
+33h (INT 33h) in protected mode. Most of other mouse functions (such as
+0000h, 0001h, 0002h and so on) will also work when called by your program
+from protected mode. The function number is placed in the AX register, and
+no error codes are reported on function's return. Note that if the DOS Extender
+could not detect a mouse driver at startup, these functions will not be
+available in protected mode (INT 33h interrupt handler will simply return
+with an IRETD instruction). </FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

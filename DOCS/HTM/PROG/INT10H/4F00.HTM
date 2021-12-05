@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">4.03 - VBE function 4F00h -
+Get SuperVGA Information </FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 4F00h<BR>
+<B>ES:EDI</B> = pointer to 512 byte buffer</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AL</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 4Fh (if function supported by VESA
+BIOS)<BR>
+<B>AH</B> = 00h (if function was successful)<BR>
+<B>ES:EDI</B> = pointer to 512 byte buffer filled with VESA BIOS information</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes:</FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) The following fields
+  in the structure pointed to by ES:EDI will be converted to protected mode
+  linear pointers relative to 0:</FONT></P>
+  <BLOCKQUOTE>
+    <P><I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">OemStringPtr</FONT></I><FONT
+     SIZE=-1 FACE="Verdana, Arial, Helvetica"> at offset 06h<BR>
+    <I>VideoModePtr</I> at offset 0Eh<BR>
+    <I>OemVendorNamePtr</I> at offset 16h<BR>
+    <I>OemProductNamePtr</I> at offset 1Ah<BR>
+    <I>OemProductRevPtr</I> at offset 1Eh<BR>
+    </FONT></P>
+  </BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

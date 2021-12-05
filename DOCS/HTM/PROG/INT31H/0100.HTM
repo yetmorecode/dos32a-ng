@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">2.14 - DPMI function 0100h
+- Allocate DOS Memory Block</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Allocates a block of memory
+from the DOS memory pool, ie memory below the 1 MB boundary that is controlled
+by DOS. Such memory blocks are typically used to exchange data with real
+mode programs, TSRs, or device drivers. The function returns both the real
+mode segment base address of the block and one or more descriptors that
+can be used by protected mode applications to access the block.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0100h<BR>
+<B>BX</B> = number of (16-byte) paragraphs desired</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear<BR>
+<B>AX</B> = real mode segment base address of allocated block<BR>
+<B>DX</B> = selector for allocated block</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code<BR>
+<B>BX</B> = size of largest available block in paragraphs</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0007h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - memory control blocks damaged<BR>
+  <B>0008h</B> - insufficient memory<BR>
+  <B>8011h</B> - descriptor unavailable</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) The selector returned
+  by this function will be a writeable data selector with the base set to
+  the linear address of the allocated memory block and limit set to the size
+  of the memory block.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) Client programs should
+  never modify or free any descriptors allocated by this function. The Free
+  DOS Memory Block DPMI function 0101h will deallocate the descriptors automatically.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) The DOS allocation
+  function (INT 21h function 48h) is used. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

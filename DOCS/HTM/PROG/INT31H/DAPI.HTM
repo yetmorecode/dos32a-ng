@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.52 - DOS/32 Advanced vendor-specific
+DPMI functions </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The entry point to the
+vendor-specific DPMI functions can be obtained through the DPMI call 0A00h
+with DS register containing the selector of the ID-string and ESI register
+containing the offset. The entry point code selector will be returned in
+ES and the offset of the entry point routine will be placed in EDI. To access
+vendor-specific DPMI API functions you must issue a far call to the address
+pointed to by ES:EDI.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The ASCIIZ ID-string for
+DOS/4G extensions is: &quot;RATIONAL DOS/4G&quot;,\0 (Please note that DOS/4G
+API extensions have not been implemented in this version of DOS/32 Advanced
+DOS Extender. Any call to DOS/4G API, ie to the address returned in ES:EDI
+will terminate the program immediately and display an error message on the
+screen.)</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The ASCIIZ ID-string for
+DOS/32 Advanced extensions is: &quot;SUNSYS DOS/32A&quot;,\0 To call DOS/32
+Advanced DPMI API functions you must place the function number in AL register.
+On return the carry flag will be cleared, if the function was successful.
+Otherwise the carry flag will be set and no registers will be modified.
+Please note that none of API functions will perform any kind of action on
+the system, instead they will simply return pointers and variables from
+the DPMI kernel code that can be altered by the user himself.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">WARNING</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica">: The following functions will
+give the user an access to the internal variables inside DOS/32 Advanced
+DPMI kernel. Setting these variables to improper values may cause the DOS
+Extender to malfunction and/or result in loss of data! </FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

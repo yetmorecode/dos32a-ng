@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.24 - DPMI function 0301h
+- Call Real Mode Procedure With Far Return Frame </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Simulates a FAR CALL to
+a real mode procedure. The called procedure must return by executing a RETF
+(far return) instruction.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = 0301h<BR>
+<B>BH</B> = flags (must be 0)<BR>
+<B>CX</B> = number of words to copy from protected mode to real mode stack<BR>
+<B>ES:EDI </B>= selector:offset of real mode register data structure in
+the following format:</FONT></P>
+
+<P><TABLE WIDTH="60%" HEIGHT="447" BORDER="0" CELLSPACING="0" CELLPADDING=
+"4">
+<TR>
+<TD HEIGHT="24" BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Offset</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Length</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Contents</FONT></B></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">00h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EDI</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">04h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">ESI</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">08h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EBP</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0Ch</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">reserved, should be
+zero</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">10h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EBX</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">14h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EDX</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">18h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">ECX</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">1Ch</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EAX</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">20h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CPU status flags</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">22h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">ES</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">24h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">DS</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">26h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">FS</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">28h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">GS</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2Ah</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">IP</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2Ch</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CS</FONT></TD></TR>
+<TR>
+<TD HEIGHT="24" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2Eh</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">SP</FONT></TD></TR>
+<TR>
+<TD HEIGHT="1" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">30h</FONT></TD>
+<TD HEIGHT="1" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD HEIGHT="1" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">SS</FONT></TD></TR>
+</TABLE>
+</TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear<BR>
+<B>ES:EDI </B>= selector:offset of modified real mode register data structure</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed:<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8012h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - linear memory unavailable
+  (stack)<BR>
+  <B>8013h</B> - physical memory unavailable (stack)<BR>
+  <B>8014h</B> - backing store unavailable (stack)<BR>
+  <B>8021h</B> - invalid value (CX too large)</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes:</FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) The CS:IP in the real
+  mode register data structure specifies the address of the real mode procedure
+  to call.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) If the SS:SP fields
+  in the real mode register data structure are zero, a real mode stack will
+  be provided by the DPMI host. Otherwise, the real mode SS:SP will be set
+  to the specified values before the interrupt handler is called.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) Values placed in the
+  segment register positions of the data structure must be valid for real
+  mode; ie the values must be paragraph addresses and not selectors.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) All general register
+  fields in the data structure are DWORDs so that 32-bit registers can be
+  passed to real mode.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">e) The target real mode
+  procedure must return with the stack in the same state as when it was called.
+  This means that the real mode code may switch stacks while it is running,
+  but must return on the same stack that it was called on and must exit with
+  a RETF (far return) and should not clear the stack of any other parameters
+  that were passed to it on the stack.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">f) When this function
+  returns, the real mode register data structure will contain the values
+  that were returned by the real mode procedure. The CS:IP and SS:SP values
+  will be unmodified in the register data structure.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">g) It is the caller's
+  responsibility to remove any parameters that were pushed on the protected
+  mode stack. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

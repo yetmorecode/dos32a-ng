@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.03 - DPMI function 0002h
+Segment to Descriptor<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Maps a real mode segment
+(paragraph) address onto a descriptor that can be used by a protected mode
+program to access the same memory.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0002h<BR>
+<B>BX</B> = real mode segment address</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear<BR>
+<B>AX</B> = selector for real mode segment</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed:<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8011h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - descriptor unavailable</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) The descriptor's limit
+  will be set to 64 KB.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) Multiple calls to
+  this function with the same segment address will return the same selector.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) The intent of this
+  function is to provide clients with easy access to commonly used real mode
+  segments such as the BIOS data area at segment 0040h and the video refresh
+  buffers at segments 0A000h, 0B000h, and 0B800h. Clients should not call
+  this function to obtain descriptors to private data areas.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) Descriptors created
+  by this function can never be modified or freed. For this reason, the function
+  should be used sparingly. Clients which need to examine various real mode
+  addresses using the same selector should allocate a descriptor with DPMI
+  function 0000h and change the base address in the descriptor as necessary,
+  using the Set Segment Base Address function DPMI function 0007h.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">e) DOS/32 Advanced DPMI
+  will automatically allocate data selector 0040h to map the BIOS data area
+  at segment 0040h. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

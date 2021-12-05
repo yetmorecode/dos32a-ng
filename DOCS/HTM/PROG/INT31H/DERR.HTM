@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.63 - DPMI error codes </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">If a DPMI function was
+unsuccessful, carry flag (CF) will be set and an error code will be placed
+in register AX. The following is a list of error codes returned by a DPMI
+host.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8001h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Unsupported function<BR>
+Returned in response to any function call which is not implemented by this
+host, because the requested function is either undefined or optional.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8002h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid state<BR>
+Some object is in the wrong state for the requested operation.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8003h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - System integrity<BR>
+The requested operation would endanger system integrity, eg, a request to
+map linear addresses onto system code or data.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8004h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Deadlock<BR>
+Host detected a deadlock situation.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8005h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Request canceled<BR>
+A pending serialization request was canceled.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8010h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Resource Unavailable<BR>
+The DPMI host cannot allocate internal resources to complete an operation.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8011h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Descriptor unavailable<BR>
+Host is unable to allocate a descriptor.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8012h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Linear memory unavailable<BR>
+Host is unable to allocate the required linear memory.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8013h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Physical memory unavailable<BR>
+Host is unable to allocate the required physical memory.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8014h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Backing store unavailable<BR>
+Host is unable to allocate the required backing store.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8015h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Callback unavailable<BR>
+Host is unable to allocate the required callback address.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8016h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Handle unavailable<BR>
+Host is unable to allocate the required handle.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8017h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Lock count exceeded<BR>
+A locking operation exceeds the maximum count maintained by the host.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8018h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Resource owned exclusively<BR>
+A request for serialization of a shared memory block could not be satisfied
+because it is already serialized exclusively by another client.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8019h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Resource owned shared<BR>
+A request for exclusive serialization of a shared memory block could not
+be satisfied because it is already serialized shared by another client.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8021h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid value<BR>
+A numeric or flag parameter has an invalid value.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8022h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid selector<BR>
+A selector does not correspond to a valid descriptor.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8023h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid handle<BR>
+A handle parameter is invalid.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8024h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid callback<BR>
+A callback parameter is invalid.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8025h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid linear address<BR>
+A linear address range (either supplied as a parameter or implied by the
+call) is invalid.</FONT></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8026h</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> - Invalid request<BR>
+The request is not supported by the underlying hardware. </FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

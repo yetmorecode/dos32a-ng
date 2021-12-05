@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: D32A Library Reference</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender - D32A C/C++ Run-Time Library Reference</FONT></I></B></CENTER></P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><BR><B><FONT FACE="Verdana, Arial, Helvetica">
+4.10 - DOS/32 Advanced D32A Library function - <I>d32a_getfreemem_info()</I>
+<BR></FONT></B></P>
+
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Synopsys:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I><BLOCKQUOTE>
+#include &lt;d32a.h><BR>
+void d32a_getfreemem_info(D32A_MEMINFO *MemInfo);<BR>
+<BR>
+typedef struct _D32A_MEMINFO {<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long LargestFreeBlock;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long MaxUnlockedPages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long MaxLockedPages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long LinearSpaceInPages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long TotalNumOfUnlockedPages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long TotalNumOfFreePages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long TotalNumOfPhysPages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long FreeLinearSpaceInPages;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long SizeOfPagingFile;<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;unsigned long DPMI_Reserved[3];<BR>
+} D32A_MEMINFO;<BR>
+</BLOCKQUOTE></I></FONT></P>
+<P><BR></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Description:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE>
+The <I>d32a_getfreemem_info</I> function returns the complete information about
+Extended memory availability and its state as returned by DPMI function
+0500h. The information is placed into the <B>MemInfo</B> structure which must be
+declared somewhere in the program.
+The values returned by this function in the structure <B>MemInfo</B> should be considered as advisory
+when the application is running in a multitasking environment, as other
+programs may allocate some memory after this function has been called.
+</BLOCKQUOTE></FONT></P>
+<P><BR></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Returns:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE>
+This function fills the <B>MemInfo</B> structure, defined somewhere in the
+program's body with information about Extended memory state.
+</BLOCKQUOTE></FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

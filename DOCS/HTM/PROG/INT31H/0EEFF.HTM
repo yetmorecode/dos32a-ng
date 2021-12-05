@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.51 - DPMI function 0EEFFh
+- Get DOS Extender Info </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Returns information about
+the DOS Extender.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0EEFFh</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear<BR>
+<B>EAX</B> = &quot;D32A&quot; (44333241h)<BR>
+<B>CL</B> = CPU type:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">03h = 80386<BR>
+  04h = 80486<BR>
+  05h = 80586 (Pentium)<BR>
+  06h = 80686 (Pentium Pro)<BR>
+  07h-0FFh = reserved</FONT></P>
+</BLOCKQUOTE>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CH</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = System software type:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">00h = Clean<BR>
+  01h = XMS<BR>
+  02h = VCPI<BR>
+  03h = DPMI</FONT></P>
+</BLOCKQUOTE>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">DL</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = DOS Extender minor version
+(binary)<BR>
+<B>DH</B> = DOS Extender major version (binary)<BR>
+<B>ES:EBX</B> = selector:offset of ASCIIZ copyright string</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed:<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8001h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - unsupported function</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes:</FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) This function is not
+  a part of DPMI 0.9 specification and is invented for compatibility with
+  PMODE/W DOS Extender only.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) Under DOS/32 Advanced
+  the pointer ES:EBX will point to an empty string (to a byte 00h). </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

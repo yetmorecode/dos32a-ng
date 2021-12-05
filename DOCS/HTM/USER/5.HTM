@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: User's Reference [Environment Variable]</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- User's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">5.0 - DOS/32 Advanced -
+Environment Variable<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">By default, the install
+program will add a line <B>SET DOS32A=</B> followed by the path to
+the directory into which you installed DOS/32 Advanced DOS Extender to your
+<I>autoexec.bat</I> file. Later on, you can add the options described
+in the previous section of this manual to this line directly after the
+path, separated by spaces or slashes(*). However, the intention of this section is to
+explain why you need this environment variable even when you do not use
+any options to specify the configuration of the DOS Extender from the environment.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The environment variable
+<B>DOS32A</B> will be used by DOS/32 Advanced only when you specify any options
+in it, and the path portion will always be ignored by the DOS Extender.
+Furthermore, the environment variable is <B><I>not</I></B> required to be included into
+<I>autoexec.bat</I> by the DOS Extender itself, however it will be
+used by certain DOS/32 Advanced utilites and by DOS/32 Advanced stub files
+STUB/32A and STUB/32C. The following utility programs will rely on the environment
+variable <B>DOS32A</B> in order to operate properly:</FONT></BLOCKQUOTE></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">SB - SUSNYS Bind Utility
+program will, when binding DOS/32 Advanced DOS Extender or DOS/32 Advanced
+stub files to your applications, look in the specified path, subdirectory
+<I>.\BINW</I> for DOS/32A, STUB/32A and STUB/32C executables.</FONT>
+</BLOCKQUOTE></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">SC - SUNSYS Compress Utility
+program will, when compressing applications look in the specified path,
+subdirectory <I>.\BINW</I> for SUNSYS Bind Utility program <I>SB.EXE</I>.</FONT></BLOCKQUOTE></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">SS - SUSNYS Setup Utility
+program will, when restoring Predefined Configurations look in the specified
+by the path directory, subdirectory <I>.\D32</I> for default configurations (<I>*.d32</I>
+files).</FONT></BLOCKQUOTE></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">And finally DOS/32 Advanced
+stub programs, STUB/32A and STUB/32C will, when bound to your applications,
+look in the specified by the path directory, subdirectory <I>.\BINW</I> for DOS/32
+Advanced DOS Extender executable.</FONT></BLOCKQUOTE></P>
+
+<P>&nbsp;</P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Also, when using the programs
+mentioned above, all of them will search the directories for the required
+files in the following order:</FONT></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">1) current directory,
+from which the programs were started (applies to SB, SC, SS, STUB/32A and STUB/32C).
+</FONT></BLOCKQUOTE></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2) default DOS/32 Advanced
+directory, specified by <B>DOS32A</B> environment variable, subdirectories <I>.\BINW</I>
+for SB, SC, STUB/32A and STUB/32C, and <I>.\D32</I> for SS.</FONT></BLOCKQUOTE></P>
+
+<P><BLOCKQUOTE><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">3) additionally, STUB/32A and STUB/32C
+will scan the <B>PATH</B> environment variable in order to find the DOS Extender's
+executable file <I>dos32a.exe</I>. </FONT></BLOCKQUOTE></P>
+
+
+<P>&nbsp;</P>
+
+<P><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">
+(*) <B>Note:</B><BR>
+ when adding environment variables to the line <B>SET DOS32A=</B> which contains the
+directory path pointing to DOS/32 Advanced base directory (the directory into which you installed the
+DOS Extender), the directory path should always stay in front of the environment variable list.
+No spaces or other characters should be put between the equal sign, and the first letter of the
+directory name.
+</FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

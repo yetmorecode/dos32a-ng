@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: D32A Library Reference</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender - D32A C/C++ Run-Time Library Reference</FONT></I></B></CENTER></P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><BR><B><FONT FACE="Verdana, Arial, Helvetica">
+2.13 - DOS/32 Advanced D32A Library function - <I>d32a_get_cpu_speed()</I>
+<BR></FONT></B></P>
+
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Synopsys:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I><BLOCKQUOTE>
+#include &lt;d32a.h><BR>
+int d32a_get_cpu_id(void);
+</BLOCKQUOTE></I></FONT></P>
+<P><BR></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Description:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE>
+This function determines the speed of the processor.
+Please note that this function will work on most types of CPU, independent of CPU brand
+and vendor. When measuring speed of the modern processors (Pentium) this
+function will use &quot;Read Timestamp Counter&quot; instruction, while on older
+processors it will fall back to the more common &quot;IDIV&quot; algorithm. To obtain
+the most precise results you should call this function several times, selecting
+the value which seems to be the most common.
+</BLOCKQUOTE></FONT></P>
+<P><BR></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Returns:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE>
+Returns the speed of the CPU in MHz.
+</BLOCKQUOTE></FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

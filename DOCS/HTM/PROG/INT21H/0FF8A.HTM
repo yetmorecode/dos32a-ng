@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">3.47 - DOS function 0FF8Ah
+- DOS/32 Advanced Get ADPMI Configuration Info </FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0FF8Ah</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EAX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = 49443332h ('ID32') (if the
+function is supported)<BR>
+<B>EBX</B> = DOS/32 Advanced version number<BR>
+<B>CL</B> = CPU type</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">03h = 80386<BR>
+  04h = 80486<BR>
+  05h = 80586 (Pentium)<BR>
+  06h = 80686 (Pentium Pro or Pentium II)<BR>
+  07h-0FFh = reserved</FONT></P>
+</BLOCKQUOTE>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CH</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = System software type:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">00h = Clean<BR>
+  01h = XMS<BR>
+  02h = VCPI<BR>
+  03h = DPMI</FONT></P>
+</BLOCKQUOTE>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">DL</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = ADPMI Kernel configuration
+bits<BR>
+<B>ESI</B> = pointer to DOS/32 Advanced ADPMI Configuration Header<BR>
+<B>FS</B> = selector that can be used to access ADPMI Configuration Header</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) This call is specific
+  to DOS/32 Advanced DOS Extender only, and is not supported by standard
+  DOS.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Additional information
+  about value returned in DL register and about DOS/32 Advanced DPMI Kernel
+  configuration can be found in the document &quot;DOS/32 Advanced Technical
+  Reference&quot;. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

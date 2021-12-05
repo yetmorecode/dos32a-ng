@@ -1,0 +1,6 @@
+Open Watcom Linker Version 2.0 beta Jun  1 2021 00:24:05 (32-bit)
+Copyright (c) 2002-2021 The Open Watcom Contributors. All Rights Reserved.
+Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
+Created on:       21/12/05 16:31:50
+Error! E2008: cannot open dos32a.obj : file not found
+Error! E2008: cannot open kernel.obj : file not found

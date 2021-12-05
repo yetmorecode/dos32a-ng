@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">4.02 - VGA function 1Ch - Save/Restore
+VGA State </FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AH</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = 1Ch<BR>
+<B>AL</B> = subfunction:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">00h - get state buffer
+  size<BR>
+  <B>Returns: EBX</B> = number of 64-byte blocks needed<BR>
+  01h - save video states<BR>
+  02h - restore video states </FONT></P>
+</BLOCKQUOTE>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">ECX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = states to save/restore:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">bit 0 - VGA video hardware
+  state<BR>
+  bit 1 - VGA BIOS data state<BR>
+  bit 2 - VGA DAC state</FONT></P>
+</BLOCKQUOTE>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">ES:EBX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = pointer to save/restore buffer</FONT></TD></TR>
+<TR>
+<TD VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AL</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 1Ch (if function supported by VGA BIOS)</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) many BIOSes corrupt
+  the video registers when saving the state, so a program should restore
+  the state immediately after saving it (the saved data is uncorrupted).</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) For subfunctions 01h
+  and 02h, the DOS Extender will internally call subfunction 00h to extract
+  the information about size of data that is to be copied. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

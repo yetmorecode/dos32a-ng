@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">3.45 - DOS function 0FF88h
+- DOS/32 Advanced Identification Call </FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0FF88h</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">EAX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 49443332h ('ID32') (if the function
+is supported)<BR>
+<B>EBX</B> = DOS/32 Advanced version number<BR>
+<B>ECX</B> = DOS/32 Advanced internal data<BR>
+<B>EDX</B> = DOS/32 Advanced internal data<BR>
+<B>ESI</B> = DOS/32 Advanced internal data<BR>
+<B>EDI</B> = DOS/32 Advanced internal data</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) This call is specific
+  to DOS/32 Advanced DOS Extender only, and is not supported by standard
+  DOS.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) All general registers,
+  except EBP, will be modified by this call. Register EAX will contain an
+  id-string, 'ID32', and register EBX will contain the version number of
+  the currently running DOS/32 Advanced DOS Extender.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) This call is supported
+  by DOS/32 Advanced in both real and protected modes.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) This call will be
+  used by DOS/32 Advanced at startup, to determine if the program was spawned
+  from another DOS/32 Advanced application, and to get information about
+  extended memory that can be shared between the mother and the child processes.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">e) When an external DPMI
+  host is present and runs protected mode (for example Windows), this call
+  will be supported by the DOS Extender in protected mode only. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

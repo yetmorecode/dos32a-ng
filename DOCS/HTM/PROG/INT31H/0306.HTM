@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.29 - DPMI function 0306h
+- Get Raw Mode Switch Addresses </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Returns addresses that
+can be called for low-level mode switching.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0306h</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CF</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> clear<BR>
+<B>BX:CX</B> = real-to-protected mode switch address<BR>
+<B>SI:EDI</B> = protected-to-real mode switch address</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) The address returned
+  in BX:CX must only be called in real mode to switch into protected mode.
+  The address returned in SI:EDI must only be called in protected mode to
+  switch into real mode.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) The mode switch procedures
+  are entered by a FAR JMP to the appropriate address with the following
+  parameters:</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX = new DS<BR>
+  CX = new ES<BR>
+  DX = new SS<BR>
+  (E)BX = new (E)SP<BR>
+  SI = new CS<BR>
+  (E)DI = new (E)IP</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The processor is placed
+  into the desired mode, and the DS, ES, SS, (E)SP, CS, and (E)IP registers
+  are updated with the specified values; in other words, execution of the
+  client continues in the requested mode at the address provided in registers
+  SI:EDI. The values specified to be placed into the segment registers must
+  be appropriate for the destination mode; if invalid selectors are supplied
+  when switching into protected mode, an exception will occur.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The values in (E)AX,
+  (E)BX, (E)CX, (E)DX, (E)SI, and (E)DI after the mode switch are undefined.
+  (E)BP will be preserved across the mode switch call so it can be used as
+  a pointer. The FS and GS segment registers will contain zero after the
+  mode switch.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">If interrupts are disabled
+  when the mode switch procedure is invoked, they will not be re-enabled
+  by the DPMI host (even temporarily).</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) It is up to the client
+  to save and restore the state of the task when using this function to switch
+  modes. This usually requires using the state save/restore procedures whose
+  addresses are returned by DPMI function 0305h.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) Clients may find it
+  more convenient to use DPMI functions 0300h, 0301h, and 0302h for mode
+  switching than this function. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>
