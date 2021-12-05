@@ -18,7 +18,15 @@ From this repository (in Dosbox):
 make.bat
 ```
 
-8)
+:monocle_face:
+
+With Docker:
+
+```
+docker build
+```
+
+:sunglasses:
 
 ## Legacy version
 
