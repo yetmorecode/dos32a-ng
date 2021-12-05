@@ -4,13 +4,21 @@ Happy hacking
 
 ## Building DOS/32A
 
-You will need TASM 4+:
+With TASM 4+:
 
 ```
 tasm32 /dEXEC_TYPE=0 /m /ml /c /la kernel.asm
 tasm32 /dEXEC_TYPE=0 /m /ml /c /la dos32a.asm
 tlink /3 dos32a kernel,DOS4GW.exe
 ```
+
+From this repository (in Dosbox):
+
+```
+make.bat
+```
+
+8)
 
 ## Legacy version
 
