@@ -6,6 +6,7 @@
 del *.obj
 del *.lst
 del *.exe
+del ..\..\*.map
 
 ..\..\bin\tasm32 /dEXEC_TYPE=0 /m /ml /c /la kernel.asm
 ..\..\bin\tasm32 /dEXEC_TYPE=0 /m /ml /c /la dos32a.asm

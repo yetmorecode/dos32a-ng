@@ -2,6 +2,8 @@
  
 Happy hacking
 
+![dos32a next gen](doc/dos32ang.png)
+
 ## Building DOS/32A
 
 With TASM 4+:

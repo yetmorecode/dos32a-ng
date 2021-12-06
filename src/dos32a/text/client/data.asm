@@ -222,16 +222,17 @@ ms_int			equ @area1_dw+0ACh		;dw 0	; INT #
 _app_buf_allocsel	equ @area2_dw+00h		;dw 0
 _app_buf_allocbase	equ @area2_dd+APP_MAXOBJECTS*2	;dd APP_MAXOBJECTS*2 dup(00h)
 
-
 ;-----------------------------------------------------------------------------
 n_msg	db 0
-cpr_msg	db 'DOS/32A -- DOS Extender '
+cpr_msg db '   ___     ___',cr
+        db '  (o o)   (o o)     DOS/32A -- DOS Extender '
 If EXEC_TYPE eq 2
 	db 'BETA '
 EndIf
 	db 'version '
 ver_msg	db 'x.x.x',cr
-	db 'Copyright (C) 1996-2006 by Narech K.',cr
+        db ' (  V  ) (  V  )    Copyright (C) 1996-2006 by Narech K.',cr
+        db '/--m-m- /--m-m--ng- https://github.com/yetmorecode/dos32a-ng',cr,cr
 cpr_end	label byte
 
 errmsg1	db 'DOS/32A fatal (%w): ',0
