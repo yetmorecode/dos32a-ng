@@ -14,10 +14,12 @@ tasm32 /dEXEC_TYPE=0 /m /ml /c /la dos32a.asm
 tlink /3 dos32a kernel,DOS4GW.exe
 ```
 
-From this repository (in Dosbox):
+From this repository (directly in dosbox):
 
 ```
-> make.bat
+mount d ~/git/dos32a-ng
+D:
+make.bat
 ```
 
 :monocle_face:
