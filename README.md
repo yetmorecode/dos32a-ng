@@ -38,6 +38,6 @@ $ docker run -it -v ${PWD}/:/app/ dos32a --rm dosbox.sh
 
 Check other branches for legacy versions:
 
-* 7.1.0 SDK with full documentation and build instructions
-* 8.0.0 source with build instructions
-* 9.1.2 source 
+* https://github.com/yetmorecode/dos32a-ng/tree/legacy-710-sdk - 7.1.0 SDK with full documentation and build instructions
+* https://github.com/yetmorecode/dos32a-ng/tree/legacy-800 - 8.0.0 source with build instructions
+* https://github.com/yetmorecode/dos32a-ng/tree/legacy-912 - 9.1.2 source 
