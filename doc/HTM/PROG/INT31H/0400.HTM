@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.30 - DPMI function 0400h
+- Get Version<BR>
+<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Returns the version number
+of the DPMI Specification implemented by the DPMI host. Clients can use
+this information to determine which function calls are supported in the
+current environment.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0400h</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CF</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> clear<BR>
+<B>AL</B> = DPMI minor version (binary)<BR>
+<B>AH</B> = DPMI major version (binary)<BR>
+<B>BX</B> = flags:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><TABLE WIDTH="80%" HEIGHT="209" BORDER="0" CELLSPACING="0" CELLPADDING=
+  "4">
+<TR>
+<TD HEIGHT="32" BGCOLOR="#dcdcdc">  <B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Bits</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">  <B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Significance</FONT></B></TD></TR>
+<TR>
+<TD HEIGHT="48" BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0</FONT></TD>
+<TD BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0 = host is 16-bit DPMI
+  implementation<BR>
+  1 = host is 32-bit (80386+) DPMI implementation</FONT></TD></TR>
+<TR>
+<TD HEIGHT="48" BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">1</FONT></TD>
+<TD BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0 = CPU returned to V86
+  mode for reflected interrupts<BR>
+  1 = CPU returned to real mode for reflected interrupts</FONT></TD></TR>
+<TR>
+<TD HEIGHT="48" BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0 = virtual memory not supported<BR>
+  1 = virtual memory supported</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">3..15</FONT></TD>
+<TD BGCOLOR="#e4e4e4">  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">reserved</FONT></TD></TR>
+</TABLE>
+</P>
+</BLOCKQUOTE>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+<B>CL</B> = processor type:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">03h = 80386<BR>
+  04h = 80486<BR>
+  05h = 80586 (Pentium)<BR>
+  06h = 80686 (Pentium Pro or Pentium II)<BR>
+  07h-FFh = reserved for future Intel processors</FONT></P>
+</BLOCKQUOTE>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+<B>DL</B> = current value of virtual slave PIC base interrupt<BR>
+<B>DH</B> = current value of virtual master PIC base interrupt</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes:</FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) Under DPMI hosts,
+  the major version number is returned in DH and the minor version number
+  is returned in DL. There are two decimal digits for the minor version number
+  with the least-significant digit representing the revision number of the
+  minor version number. Under DPMI version 0.9 hosts, DH is returned as 0,
+  and DL is returned as decimal 90 (5Ah). In hypothetical DPMI version 2.3,
+  DH would be returned as 2 and DL would be returned as 30 (1Eh). </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

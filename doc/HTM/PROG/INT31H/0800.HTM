@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.43 - DPMI function 0800h
+- Physical Address Mapping </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Converts a physical address
+into a linear address. This function allows device drivers running under
+DPMI hosts which use paging to reach physical memory that is associated
+with their devices above the 1 MB boundary. Examples of such devices are
+the Weitek numeric coprocessor (usually mapped at 3 GB), buffers that hold
+scanner bitmaps, and high-end displays that can be configured to make display
+memory appear in extended memory.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0800h<BR>
+<B>BX:CX</B> = physical address of memory<BR>
+<B>SI:DI</B> = size of region to map (bytes)</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear<BR>
+<B>BX:CX</B> = linear address that can be used to access the physical memory</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed:<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8003h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - system integrity (DPMI host
+  memory region)<BR>
+  <B>8021h</B> - invalid value (address is below 1 MB boundary)</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) It is the caller's
+  responsibility to allocate and initialize a descriptor for access to the
+  memory.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) This function should
+  only be used by clients that absolutely require direct access to a memory
+  mapped device at physical addresses above 1 MB. Clients should not use
+  this function to access memory below the 1 MB boundary (the real mode addressable
+  region). See also DPMI functions 0002h.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) When this function
+  is called, the DPMI host either creates page table entries that directly
+  map the physical addresses requested and returns the linear address of
+  the created page table entries, or else just returns the linear address
+  of the memory region that is already used to map the requested device.
+  For example, if the client attempts to map a Weitek coprocessor and the
+  host already has a linear region set up to map the Weitek chip and virtualize
+  it, it would simply return the linear address of the existing region. If
+  the host does not virtualize the Weitek chip, it would create 16 page table
+  entries that map the 64 KB Weitek address space and return a linear address
+  corresponding to the new page table entries.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) If the host is not
+  virtualizing the device, it will disable any memory caching on the mapped
+  pages; in particular, on the 80486+ the host will set the PCD (page cache
+  disable) bit in the page table entries.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">e) Programs and device
+  drivers which need to perform DMA I/O to physical addresses in a virtualized
+  hardware environment should use the Virtual DMA Services. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

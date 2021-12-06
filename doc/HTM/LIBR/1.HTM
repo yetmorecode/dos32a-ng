@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: D32A Library Reference</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender - D32A C/C++ Run-Time Library Reference</FONT></I></B></CENTER></P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><BR><B><FONT FACE="Verdana, Arial, Helvetica">
+1.0 - DOS/32 Advanced D32A Library - Introduction
+<BR></FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">
+DOS/32 Advanced D32A C/C++ Run-Time Library is a collection of routines
+with C/C++ language interface. The primary goal when designing the library
+was to ensure maximum performance and speed while keeping the size of the
+library, and thus the size of executable applications that use it as small
+as possible. The library functions provide access to the low level DOS
+Extender and DPMI features which otherwise require the use of the assembly
+language.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">
+D32A C/C++ Run-Time Library is fully compatible with WATCOM C/C++
+version 10.6 and higher, and supports the both stack based and register
+based calling conventions. To use functions provided by the library you need
+to include the line <I>#include &lt;d32a.h></I> into your source files. Many of the
+library's functions duplicate those present in the standard C/C++ Run-Time
+library provided with WATCOM C/C++, but perform better and take less space
+(such as <I>d32a_malloc()</I> function). Therefore you may want to use <I>#undef</I> and
+<I>#define</I> keywords to redirect some of the standard functions to D32A
+library enhanced functions.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">
+It is important to note that some, but not all, of the library's
+functions require DOS/32 Advanced DOS Extender as they are using its
+extended features not found in other DOS Extenders. A minor drawback is that
+when debugging an application with WATCOM Debugger, the program will be run
+under DOS/4G DOS Extender where DOS/32 Advanced features are not present.
+You are suggested to use SUNSYS Debugger provided with DOS/32 Advanced DOS
+Extender to ensure that the applications you debug will work correctly
+during the debugging process.</FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

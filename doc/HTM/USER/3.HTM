@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: User's Reference [Usage]</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- User's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">3.0 - DOS/32 Advanced -
+Usage<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">There are several ways
+DOS/32 Advanced can be &quot;plugged&quot; into your 16-bit and 32-bit protected
+mode applications and games. The simpliest way to replace the old DOS/4GW
+DOS Extender provided with many programs is to copy DOS/32 Advanced executable
+file <I>dos32a.exe</I> into the directory where you installed the software
+(the directory containing <I>dos4gw.exe</I> file), delete the old <I>dos4gw.exe</I>
+file and rename <I>dos32a.exe</I> to <I>dos4gw.exe</I>. You can
+always preserve the old <I>dos4gw.exe</I> file by copying it into another
+directory, and if the program you intended to run with DOS/32 Advanced is
+not 100 per cent DOS/32 Advanced compatible, you can always recopy the old <I>dos4gw.exe</I>
+DOS Extender back.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Below are listed three
+different examples which show three different ways of how you can use DOS/32
+Advanced DOS Extender in your programs. Please note that the examples assume
+you are using an MS-DOS or compatible Operating System.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><B><I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Example 1:</FONT></I></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">You have installed the
+game TIE FIGHTER (CD Version) into directory <I>C:\GAMES\TIECD</I>. In the same
+directory is located file <I>dos4gw.exe</I>.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 1)</B> Copy file
+<I>dos32a.exe</I> into the directory <I>C:\GAMES\TIECD</I>, type at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;copy dos32a.exe C:\GAMES\TIECD</I></FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 2)</B> Preserve file
+<I>dos4gw.exe</I> in <I>C:\TEMP</I> directory and remove it from <I>C:\GAMES\TIECD</I>,
+type at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;cd C:\GAMES\TIECD<BR>
+&gt;move dos4gw.exe C:\TEMP</I></FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 3)</B> Rename <I>dos32a.exe</I>
+to <I>dos4gw.exe</I>, type at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;ren dos32a.exe dos4gw.exe</I></FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 4)</B> Start the game
+as usual by typing <I>tie</I> at DOS prompt.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Note that if you do not
+want to preserve the old file <I>dos4gw.exe</I> you can simply type
+at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;copy dos32a.exe C:\GAMES\TIECD\dos4gw.exe</I></FONT></P>
+
+<P>&nbsp;</P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Another way to use DOS/32
+Advanced with your protected mode applications is to execute it on a program
+by typing at DOS prompt: <I>dos32a myprog.exe</I> where <I>myprog.exe</I>
+is the file that is to be run. This way, you can keep the files unmodified
+on your hard drive but run them under DOS/32 Advanced, or start programs
+from CD-ROMs where the files can not be modified. You can also create batch
+files in which you can place the commands described below to simplify the
+start of your programs. Please note that DOS/32 Advanced DOS Extender is
+capable of starting programs from the command line even if they are bound
+to another DOS Extender, for example DOS/4GW Professional!</FONT></P>
+
+<P><B><I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Example 2:</FONT></I></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">You have installed the
+game DOOM II into directory <I>C:\DOOM2</I>. In the same directory is located file
+<I>doom2.exe</I> which is the game's executable file.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 1)</B> Copy the file
+<I>dos32a.exe</I> into the directory <I>C:\DOOM2</I>, type at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;copy dos32a.exe C:\DOOM2</I></FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 2)</B> Create a batch
+file <I>d2.bat</I>, type at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;cd C:\DOOM2<BR>
+&gt;copy con d2.bat<BR>
+&gt;@dos32a doom2.exe<BR>
+&gt;^Z</I></FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">File <I>d2.bat</I>
+will be created after you press ^Z (CTRL-Z) key combination to interrupt
+the input. Start the game by typing <I>d2</I> at DOS prompt.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The third way to use DOS/32
+Advanced with your protected mode applications is to bind it to a program.
+You must use the <A HREF="../util/1.htm">SUNSYS Bind Utility</A>
+program <I>sb.exe</I> which is included
+with DOS/32 Advanced DOS Extender. When binding DOS/32 Advanced to an executable
+file, the old DOS Extender or stub file which was bound to the application
+will be removed and discarded. Therefore you should make sure that the program
+is DOS/32 Advanced compatible. This can be done by executing DOS/32 Advanced
+on program's executable file as described above. The following example will
+show how to bind DOS/32 Advanced to a program:</FONT></P>
+
+<P><B><I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Example 3:</FONT></I></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">You have installed the
+game DUKE NUKEM 3D into directory <I>C:\DUKE3D</I>. In the same directory is located
+file <I>duke3d.exe</I> which is the game's executable file.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><B>STEP 1)</B> Use SUNSYS
+Bind Utility to bind DOS/32 Advanced executable file <I>dos32a.exe</I>
+to a program, type at DOS prompt:</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I>
+&gt;cd C:\DUKE3D<BR>
+&gt;sb -r duke3d.exe</I></FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The Bind Utility will
+report its actions and show the final size of the file <I>duke3d.exe</I>.
+You will notice that it had changed and became smaller by almost 200KB.
+The game can now be started as usual.</FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">2.28 - DPMI function 0305h
+- Get State Save/Restore Addresses </FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Returns the addresses
+of two procedures used to save and restore the state of the current task's
+registers in the mode which is not currently executing.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 0305h</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CF</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> clear<BR>
+<B>AX</B> = size of buffer in bytes required to save state<BR>
+<B>BX:CX</B> = real mode address of routine used to save/restore state<BR>
+<B>SI:EDI</B> = protected mode address of routine used to save/restore state</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes:</FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) The real mode address
+  returned by this function in BX:CX is called only in real mode to save/restore
+  the state of the protected mode registers. The protected mode address returned
+  by this function in SI:EDI is called only in protected mode to save/restore
+  the state of the real mode registers. Registers for the current mode can
+  be saved by simply pushing them on the stack.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) Both of the state-save
+  procedures are entered by a FAR CALL with the following parameters:</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AL = 0 to save state<BR>
+  AL = 1 to restore state<BR>
+  ES:EDI= (selector or segment):offset of state-save buffer</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) The state-save buffer
+  must be at least as large as the value returned in AX by DPMI function
+  0305h. The state save/restore procedures do not modify any registers.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) Some DPMI hosts will
+  not require the state to be saved, indicating this by returning a buffer
+  size of zero in AX. In such cases, the addresses returned by this function
+  can still be called, although they will simply return without performing
+  any useful function.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">e) Clients do not need
+  to call the state save/restore procedures before using DPMI functions 0300h,
+  0301h, or 0302h. The state save/restore procedures are provided specifically
+  for clients that use the raw mode switch services.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">f) A client can use the
+  function to save its state in the destination mode before switching modes
+  using the raw mode switch or issuing real-mode calls from a protected mode
+  hardware interrupt handler. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

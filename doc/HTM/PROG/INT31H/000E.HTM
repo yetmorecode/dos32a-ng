@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.12 - DPMI function 000Eh
+- Get Multiple Descriptors</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Copies one or more descriptor
+table entries into a client buffer.</FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = 000Eh<BR>
+<B>CX</B> = number of descriptors to copy<BR>
+<B>ES:EDI</B>= selector:offset of a buffer in the following format:</FONT></P>
+
+<P><TABLE WIDTH="359" HEIGHT="195" BORDER="0" CELLSPACING="0" CELLPADDING=
+"4">
+<TR>
+<TD HEIGHT="32" BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Offset</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Length</FONT></B></TD>
+<TD BGCOLOR="#dcdcdc">&nbsp;<B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Contents</FONT></B></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">00h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Selector #1 (set by client)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">02h</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Descriptor #1 (returned
+by host)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0Ah</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Selector #2 (set by
+client)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">0Ch</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Descriptor #2 (returned
+by host)</FONT></TD></TR>
+<TR>
+<TD HEIGHT="32" BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">. . .</FONT></TD>
+<TD BGCOLOR="#e4e4e4"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">. . .</FONT></TD>
+<TD BGCOLOR="#e4e4e4">&nbsp;<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">. . .</FONT></TD></TR>
+</TABLE>
+</TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if successful:<BR>
+<B>CF</B> clear<BR>
+the buffer contains copies of the descriptors for the specified selectors</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if failed:<BR>
+<B>CF</B> set<BR>
+<B>AX</B> = error code<BR>
+<B>CX</B> = number of descriptors successfully copied</FONT></P>
+
+<BLOCKQUOTE>
+  <P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">8022h</FONT></B><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"> - invalid selector</FONT></BLOCKQUOTE>
+</TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) If an error occurs
+  because of an invalid selector or descriptor, the function returns the
+  number of descriptors which were successfully copied in CX. All of the
+  descriptors which were copied prior to the one that failed are valid. </FONT></P>
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+<P>&nbsp;</P>
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender - Programmer's Reference</FONT></I></B></CENTER></P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><B><FONT FACE="Verdana, Arial, Helvetica"><IMG SRC="pics/p1.gif" BORDER="0" ALT="Contents"> Contents:<BR></FONT></B></P>
+<P><A HREF="prog/1.htm"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">1 - DOS/32 Advanced - Introduction</FONT></A></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2 - Supported DPMI functions (available through INT 31h)</FONT></P>
+<BLOCKQUOTE>
+  <P><A HREF="prog/2.htm"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">2.0 - DPMI functions - Overview</FONT></A><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0000.htm">2.01 - DPMI function 0000h - Allocate Descriptors</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0001.htm">2.02 - DPMI function 0001h - Free Descriptor</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0002.htm">2.03 - DPMI function 0002h - Map Segment to Descriptor</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0003.htm">2.04 - DPMI function 0003h - Get Selector Increment Value</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0006.htm">2.05 - DPMI function 0006h - Get Segment Base Address</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0007.htm">2.06 - DPMI function 0007h - Set Segment Base Address</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0008.htm">2.07 - DPMI function 0008h - Set Segment Limit</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0009.htm">2.08 - DPMI function 0009h - Set Descriptor Access Rights</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/000a.htm">2.09 - DPMI function 000Ah - Create Alias Descriptor</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/000b.htm">2.10 - DPMI function 000Bh - Get Descriptor</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/000c.htm">2.11 - DPMI function 000Ch - Set Descriptor</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/000e.htm">2.12 - DPMI function 000Eh - Get Multiple Descriptors</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/000f.htm">2.13 - DPMI function 000Fh - Set Multiple Descriptors</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0100.htm">2.14 - DPMI function 0100h - Allocate DOS Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0101.htm">2.15 - DPMI function 0101h - Deallocate DOS Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0102.htm">2.16 - DPMI function 0102h - Resize DOS Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0200.htm">2.17 - DPMI function 0200h - Get Real Mode Interrupt Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0201.htm">2.18 - DPMI function 0201h - Set Real Mode Interrupt Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0202.htm">2.19 - DPMI function 0202h - Get Processor Exception Handler Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0203.htm">2.20 - DPMI function 0203h - Set Processor Exception Handler Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0204.htm">2.21 - DPMI function 0204h - Get Protected Mode Interrupt Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0205.htm">2.22 - DPMI function 0205h - Set Protected Mode Interrupt Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0300.htm">2.23 - DPMI function 0300h - Simulate Real Mode Interrupt</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0301.htm">2.24 - DPMI function 0301h - Call Real Mode Procedure with RETF Frame</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0302.htm">2.25 - DPMI function 0302h - Call Real Mode Procedure with IRET Frame</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0303.htm">2.26 - DPMI function 0303h - Allocate Real Mode Callback Address</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0304.htm">2.27 - DPMI function 0304h - Free Real Mode Callback Address</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0305.htm">2.28 - DPMI function 0305h - Get State Save/Restore Addresses</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0306.htm">2.29 - DPMI function 0306h - Get Raw Mode Switch Addresses</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0400.htm">2.30 - DPMI function 0400h - Get DPMI Version</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0500.htm">2.31 - DPMI function 0500h - Get Free Memory Information</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0501.htm">2.32 - DPMI function 0501h - Allocate Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0502.htm">2.33 - DPMI function 0502h - Free Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0503.htm">2.34 - DPMI function 0503h - Resize Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/050a.htm">2.35 - DPMI function 050Ah - Get Memory Block Size and Base</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0600.htm">2.36 - DPMI function 0600h - Lock Linear Region</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0601.htm">2.37 - DPMI function 0601h - Unlock Linear Region</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0602.htm">2.38 - DPMI function 0602h - Mark Real Mode Region as Pageable</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0603.htm">2.39 - DPMI function 0603h - Relock Real Mode Region</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0604.htm">2.40 - DPMI function 0604h - Get Page Size</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0702.htm">2.41 - DPMI function 0702h - Mark Page as Demand Paging Candidate</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0703.htm">2.42 - DPMI function 0703h - Discard Page Contents</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0800.htm">2.43 - DPMI function 0800h - Physical Address Mapping</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0801.htm">2.44 - DPMI function 0801h - Free Physical Address Mapping</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0900.htm">2.45 - DPMI function 0900h - Get and Disable Virtual Interrupt State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0901.htm">2.46 - DPMI function 0901h - Get and Enable Virtual Interrupt State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0902.htm">2.47 - DPMI function 0902h - Get Virtual Interrupt State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0a00.htm">2.48 - DPMI function 0A00h - Get Vendor-Specific API Entry Point</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0e00.htm">2.49 - DPMI function 0E00h - Get Coprocessor Status</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0e01.htm">2.50 - DPMI function 0E01h - Set Coprocessor Emulation</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/0eeff.htm">2.51 - DPMI function 0EEFFh - Get DOS Extender Info (PMODE/W compatible)</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/dapi.htm">2.52 - Vendor Specific DPMI API Extensions</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/00.htm">2.53 - API function 00h - Get Access to GDT and IDT</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/01.htm">2.54 - API function 01h - Get Access to Page Tables</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/02.htm">2.55 - API function 02h - Get Access to Internal Interrupt Buffers</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/03.htm">2.56 - API function 03h - Get Access to Extended Memory Blocks</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/04.htm">2.57 - API function 04h - Get Access to Real Mode Virtual Stacks</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/05.htm">2.58 - API function 05h - Get Access to Protected Mode Virtual Stacks</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/06.htm">2.59 - API function 06h - Get DOS/32 Advanced DPMI Kernel Selectors</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/07.htm">2.60 - API function 07h - Get Critical Handler Entry Point</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/08.htm">2.61 - API function 08h - Set Critical Handler Entry Point</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/09.htm">2.62 - API function 09h - Get Access to Performance Counters</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int31h/derr.htm">2.63 - DPMI error codes</A></FONT></P>
+</BLOCKQUOTE>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">3 - Supported Extended DOS functions (available through INT 21h)</FONT></P>
+<BLOCKQUOTE>
+  <P><A HREF="prog/3.htm"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">3.0 - Extended DOS functions - Overview</FONT></A><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/09.htm">3.01 - DOS function 09h - Write String</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/1a.htm">3.02 - DOS function 1Ah - Set Disk Transfer Area Address (DTA)</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/1b.htm">3.03 - DOS function 1Bh - Get Default Drive Information</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/1c.htm">3.04 - DOS function 1Ch - Get Specific Drive Information</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/1f.htm">3.05 - DOS function 1Fh - Get Default Drive Parameter Block (DPB)</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/25.htm">3.06 - DOS function 25h - Set Interrupt Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/2f.htm">3.07 - DOS function 2Fh - Get Disk Transfer Area Address (DTA)</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/32.htm">3.08 - DOS function 32h - Get Specific Drive Parameter Block (DPB)</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/34.htm">3.09 - DOS function 34h - Get InDOS Flag Address</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/35.htm">3.10 - DOS function 35h - Get Interrupt Vector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/39.htm">3.11 - DOS function 39h - Create Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/3a.htm">3.12 - DOS function 3Ah - Remove Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/3b.htm">3.13 - DOS function 3Bh - Change Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/3c.htm">3.14 - DOS function 3Ch - Create File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/3d.htm">3.15 - DOS function 3Dh - Open File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/3f.htm">3.16 - DOS function 3Fh - Read from File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/40.htm">3.17 - DOS function 40h - Write to File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/41.htm">3.18 - DOS function 41h - Delete File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/42.htm">3.19 - DOS function 42h - Set Current File Position</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/43.htm">3.20 - DOS function 43h - Change File Attributes</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/47.htm">3.21 - DOS function 47h - Get Directory Path Name</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/48.htm">3.22 - DOS function 48h - Allocate DOS Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/49.htm">3.23 - DOS function 49h - Deallocate DOS Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/4a.htm">3.24 - DOS function 4Ah - Resize DOS Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/4b.htm">3.25 - DOS function 4Bh - Execute Program (sub-function 00h)</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/4c.htm">3.26 - DOS function 4Ch - Terminate Program</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/4e.htm">3.27 - DOS function 4Eh - Find First File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/4f.htm">3.28 - DOS function 4Fh - Find Next File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/51.htm">3.29 - DOS function 51h - Get PSP Segment</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/56.htm">3.30 - DOS function 56h - Rename File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/5a.htm">3.31 - DOS function 5Ah - Create Temporary File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/5b.htm">3.32 - DOS function 5Bh - Create New File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/62.htm">3.33 - DOS function 62h - Get PSP Selector</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/7139.htm">3.34 - DOS function 7139h - Win95 LFN Create Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/713a.htm">3.35 - DOS function 713Ah - Win95 LFN Remove Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/713b.htm">3.36 - DOS function 713Bh - Win95 LFN Change Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/7141.htm">3.37 - DOS function 7141h - Win95 LFN Delete File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/7143.htm">3.38 - DOS function 7143h - Win95 LFN Get/Set File Attributes</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/7147.htm">3.39 - DOS function 7147h - Win95 LFN Get Current Directory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/7156.htm">3.40 - DOS function 7156h - Win95 LFN Rename File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/7160.htm">3.41 - DOS function 7160h - Win95 LFN Get File True Name</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/716c.htm">3.42 - DOS function 716Ch - Win95 LFN Create/Open File</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff00.htm">3.43 - DOS function 0FF00h - DOS/4G Identification Call</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff80.htm">3.44 - DOS function 0FF80h - DOS/32 Advanced Magic Function</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff88.htm">3.45 - DOS function 0FF88h - DOS/32 Advanced Identification Call</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff89.htm">3.46 - DOS function 0FF89h - DOS/32 Advanced Get Configuration Info</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff8a.htm">3.47 - DOS function 0FF8Ah - DOS/32 Advanced Get ADPMI Configuration Info</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff90.htm">3.48 - DOS function 0FF90h - DOS/32 Advanced Get Free High Memory Info</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff91.htm">3.49 - DOS function 0FF91h - DOS/32 Advanced Allocate High Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff92.htm">3.50 - DOS function 0FF92h - DOS/32 Advanced Free High Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff93.htm">3.51 - DOS function 0FF93h - DOS/32 Advanced Resize High Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff94.htm">3.52 - DOS function 0FF94h - DOS/32 Advanced Get Free Low Memory Info</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff95.htm">3.53 - DOS function 0FF95h - DOS/32 Advanced Allocate Low Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff96.htm">3.54 - DOS function 0FF96h - DOS/32 Advanced Free Low Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff97.htm">3.55 - DOS function 0FF97h - DOS/32 Advanced Resize Low Memory Block</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff98.htm">3.56 - DOS function 0FF98h - DOS/32 Advanced Map Physical Memory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff99.htm">3.57 - DOS function 0FF99h - DOS/32 Advanced Unmap Physical Memory</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int21h/0ff9a.htm">3.58 - DOS function 0FF9Ah - DOS/32 Advanced Allocate Selector</A></FONT></P>
+</BLOCKQUOTE>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4 - Supported Extended VGA/VBE functions (available through INT 10h)</FONT></P>
+<BLOCKQUOTE>
+  <P><A HREF="prog/4.htm"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">4.0 - Extended VGA/VBE functions - Overview</FONT></A><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/1b.htm">4.01 - VGA function 1Bh - Read Functionality Information</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/1c.htm">4.02 - VGA function 1Ch - Save/Restore VGA State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/4f00.htm">4.03 - VBE function 4F00h - Get SuperVGA Information</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/4f01.htm">4.04 - VBE function 4F01h - Get SuperVGA Mode Information</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/4f04.htm">4.05 - VBE function 4F04h - Save/Restore SuperVGA State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/4f09.htm">4.06 - VBE function 4F09h - Load/Unload Palette Data</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int10h/4f0a.htm">4.07 - VBE function 4F0Ah - Get Protected Mode Interface</A></FONT></P>
+</BLOCKQUOTE>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">5 - Supported Extended Mouse functions (available through INT 33h)</FONT></P>
+<BLOCKQUOTE>
+  <P><A HREF="prog/5.htm"><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">5.0 - Extended Mouse functions - Overview</FONT></A><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0009.htm">5.01 - Mouse function 0009h - Define Graphics Cursor</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/000c.htm">5.02 - Mouse function 000Ch - Define Interrupt Subroutine Parameters</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0014.htm">5.03 - Mouse function 0014h - Exchange Interrupt Subroutines</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0016.htm">5.04 - Mouse function 0016h - Save Driver State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0017.htm">5.05 - Mouse function 0017h - Restore Driver State</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0018.htm">5.06 - Mouse function 0018h - Set Alternate Mouse User Handler</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0019.htm">5.07 - Mouse function 0019h - Return User Alternate Interrupt Handler</A></FONT><BR>
+  <FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><A HREF="prog/int33h/0020.htm">5.08 - Mouse function 0020h - Enable Mouse Driver</A></FONT></P>
+</BLOCKQUOTE>
+<P>&nbsp;</P>
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Terminology and definitions:</FONT></B>
+<FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+ADPMI = DOS/32 Advanced built-in DPMI<BR>
+DOS or Low memory = conventional memory, available under 1MB<BR>
+Extended or High memory = extended memory, available above 1MB<BR>
+DOS/32 Advanced or DOS/32A = the whole DOS Extender (DOS Extender + ADPMI)</FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Words &quot;DOS Extender&quot;
+refer to that part of DOS/32 Advanced which performs initialization and
+cleanup of protected mode and DPMI, and extends software interrupts INT
+10h, INT 21h and INT 33h.</FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Words &quot;built-in DPMI&quot;
+or &quot;ADPMI&quot; refer to the DPMI server that is built into DOS/32
+Advanced and provides INT 31h interface.</FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Words &quot;external DPMI&quot;
+refer to any DPMI host other than DOS/32 Advanced built-in DPMI (for example
+Windows DPMI).</FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Please remember that by
+definition, a DOS Extender is not necessarily includes an incorporated (built-in)
+DPMI host, and a DPMI host is not necessarily extends any software interrupts,
+but only provides an API entry point through INT 31h.</FONT></P>
+<P><CENTER><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">_ _ _</FONT></CENTER></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The goal of this document
+is to provide protected mode programmers and application software developers
+with a brief information about functions available in and supported by DOS/32
+Advanced DOS Extender, actions taken by them, parameters accepted and values
+returned in the exact form. The documentation assumes that the reader already
+has an experience of working in (extended) DOS environment and programming
+for (extended) DOS platform, which is essential in order to fully understand
+and correctly and most efficiently use all of the features available in
+DOS/32 Advanced DOS Extender. </FONT></P>
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Technical Reference [Built-in Debugger]</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Technical Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">6.0 - DOS/32 Advanced -
+Built-in Debugger<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Another feature of DOS/32
+Advanced DOS Extender is that you can use the software breakpoints INT 1
+and INT 3 to debug your programs without any external debugger. When the
+program execution reaches a software breakpoint, DOS/32 Advanced will:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">1) save the state of
+  the machine<BR>
+  2) switch to internal stack<BR>
+  3) restore real mode IRQ 1 (keyboard)<BR>
+  4) display the state of the machine<BR>
+  5) prompt you to select an action</FONT></P>
+  <P><I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if Abort is selected:</FONT></I><FONT
+   SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+  6) return to DOS</FONT></P>
+  <P><I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">if Proceed or Trace
+  are selected:</FONT></I><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+  6) restore the previously installed IRQ 1<BR>
+  7) restore the state of the machine<BR>
+  8) return to the program execution</FONT></P>
+</BLOCKQUOTE>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The debugger will ask
+you to press the key 'P' to proceed with execution of your program from
+the place where the breakpoint was encountered, the key 'A' to abort and
+exit to DOS or the key 'T' to single step through your application. Each
+time you press the 'T' key, a single CPU instruction will be executed, and
+the debugger will be reentered showing the new state of the machine.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Note that this built-in
+&quot;debugger&quot; does not require any extended memory, it does not take
+up any of the system's resources, and it does not use any external programs.
+This is just a simple and easy to use tool for the system programming when
+an external debugger does not do the job. </FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

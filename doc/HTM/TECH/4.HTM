@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Technical Reference [Exit to DOS]</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Technical Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BR>
+</FONT><B><FONT FACE="Verdana, Arial, Helvetica">4.0 - DOS/32 Advanced -
+Exit to DOS<BR>
+</FONT></B></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">When your protected program
+issues an INT 21h / AH=4Ch (DOS API &quot;Terminate Program&quot; function)
+or when DOS/32 Advanced detects a run-time error in your program, the program
+will be terminated and the DOS Extender will return to the operating system
+from which it was started performing a cleanup which involves extended memory
+deallocation, restoring of real mode interrupts and so on.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The DOS Extender will
+check if any of the real mode interrupts were modified and not restored
+(if configured to do so), restore the whole real mode interrupt table and
+the both PICs (if configured to do so) and free Mouse callback (if allocated)
+also resetting a possibly installed mouse ISR by issuing INT 33h / AX=000Ch
+and ES:EDX=0. At this point the DOS Extender will jump to the default protected
+mode INT 21h handler, ie to the built-in DPMI when running under Clean,
+XMS or VCPI, and to an external DPMI host when running under DPMI (only
+GOD knows what will happen then).</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The built-in DPMI will
+then deallocate all allocated extended memory and unconditionally restore
+certain system interrupts and the CR0 register. The CR2 register will be
+set to zero and the CR3 register will be reloaded to flush the TLB.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The following real mode
+interrupts will be unconditionally restored:</FONT></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">INT 1Bh (CTRL-BREAK)<BR>
+  INT 1Ch (Timer ticks)<BR>
+  INT 21h (DOS API)<BR>
+  INT 23h (CTRL-C)<BR>
+  INT 24h (Critical handler)<BR>
+  INT 2Fh (Multiplex)</FONT></P>
+</BLOCKQUOTE>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The state of A20 gate
+will be restored when running under XMS, and left enabled when running under
+Clean system.</FONT></P>
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">The built-in DPMI will
+then switch to the real mode and reissue INT 21h / AH=4Ch terminating the
+program completely. Note, the PIT (timer) will not be reset. </FONT></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: D32A Library Reference</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender - D32A C/C++ Run-Time Library Reference</FONT></I></B></CENTER></P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><BR><B><FONT FACE="Verdana, Arial, Helvetica">
+4.02 - DOS/32 Advanced D32A Library function - <I>d32a_malloc_low()</I>
+<BR></FONT></B></P>
+
+
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Synopsys:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><I><BLOCKQUOTE>
+#include &lt;d32a.h><BR>
+char *d32a_malloc_low(unsigned long Size);
+</BLOCKQUOTE></I></FONT></P>
+<P><BR></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Description:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE>
+The <I>d32a_malloc_low</I> function allocates a memory block with the size of
+<B>Size</B> bytes from the present DPMI server in the conventional (Low) memory
+area, at the addresses below 0x100000 (1MB). The memory allocated by this
+function can be directly accessed by the Real Mode programs or Real Mode DOS
+functions.
+</BLOCKQUOTE></FONT></P>
+<P><BR></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE><B>Returns:</B></BLOCKQUOTE></FONT></P>
+<P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica"><BLOCKQUOTE>
+The linear pointer to the first byte of the allocated memory block.
+The pointer returned by this function is also used as a handle passed
+as an argument to the <I>d32a_free</I> function, when deallocating memory.
+If the memory block of requested size <B>Size</B> cannot be allocated due
+to insufficient memory, this function will return <B>NULL</B>.
+</BLOCKQUOTE></FONT></P>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>

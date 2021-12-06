@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+  <TITLE>DOS/32 Advanced DOS Extender - Documentation: Programmer's Reference []</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000f0" ALINK="#f00000" VLINK="#700070">
+
+<style type=text/css>
+a:hover { color: #FF0000 }
+p		{ text-align: justify; }
+</style>
+<table cellpadding="0" cellspacing="0" border="0" width="660"><tr><td>
+
+
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><I><FONT COLOR="#990000" SIZE=+2>DOS/32 Advanced DOS Extender
+- Programmer's Reference</FONT></I></B></CENTER></P>
+
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+
+<P><B><FONT FACE="Verdana, Arial, Helvetica">2.62 - API function 09h - Get
+Access to Performance Counters </FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><TABLE WIDTH="90%" BORDER="1" CELLSPACING="0" CELLPADDING="4">
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">In:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#eeeeee"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">AL</FONT></B><FONT SIZE=-1
+ FACE="Verdana, Arial, Helvetica"> = 09h</FONT></TD></TR>
+<TR>
+<TD WIDTH="10%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Out:</FONT></B></TD>
+<TD WIDTH="90%" VALIGN="TOP" BGCOLOR="#dedede"><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">CX:EDX</FONT></B><FONT
+ SIZE=-1 FACE="Verdana, Arial, Helvetica"> = selector:offset pointer
+to the base address of Performance Counters</FONT></TD></TR>
+</TABLE>
+</CENTER></P>
+
+<P><B><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">Notes: </FONT></B></P>
+
+<BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">a) Selector returned
+  by this function should NOT be modified or freed by the user.</FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">b) Performance Counters
+  are 32-bit wide counters (located inside DOS/32A DPMI Kernel) that count the
+  number of mode switches performed by the DOS Extender. These counters can be
+  read from or written to at any time by the application. </FONT></P>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">c) The structure of the
+  Performance Counters is the following (relative to EDX as a base address):
+  </FONT></P>
+
+  <BLOCKQUOTE>
+    <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">
+    00h - INT RM -> PM (up)<BR>
+    04h - INT PM -> RM (down)<BR>
+    08h - IRQ RM -> PM (up)<BR>
+    0Ch - IRQ PM -> RM (down)<BR>
+    10h - IRQ Callback RM -> PM (up)<BR>
+    14h - IRQ Callback PM -> RM (down)<BR>
+    18h - Callback RM -> PM (up)<BR>
+    1Ch - Callback PM -> RM (down)<BR>
+    <BR>
+    Where &quot;INT&quot; is a Software Interrupt, &quot;IRQ&quot; is a Hardware Interrupt, &quot;IRQ
+    Callback&quot; is a Hardware Interrupt Callback (valid for IRQ 0-15) and &quot;PM&quot; and
+    &quot;RM&quot; stand for Protected and Real Modes respective.
+    </FONT></P>
+  </BLOCKQUOTE>
+  <P><FONT SIZE=-1 FACE="Verdana, Arial, Helvetica">d) Note that the counters
+  will increment each time a (respective) mode switch occurs, and cannot be
+  setup to count specific Interrupts/IRQs/Callbacks (ie INT 21h, etc).</FONT></P>
+
+</BLOCKQUOTE>
+
+<P>&nbsp;</P>
+<P><CENTER><HR WIDTH="90%" SIZE="1"></CENTER></P>
+<P><CENTER><FONT SIZE=-2 FACE="Verdana, Arial, Helvetica">Copyright © Supernar Systems, Ltd. 1996-2002<br>All Rights Reserved.</FONT></CENTER>
+</BODY>
+</HTML>
