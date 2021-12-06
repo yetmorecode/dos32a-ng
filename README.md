@@ -2,7 +2,7 @@
  
 Happy hacking
 
-![dos32a next gen](doc/dos32ang.png)
+![dos32a next gen](doc/screenshot.png)
 
 ## Building DOS/32A
 
