@@ -356,7 +356,7 @@ srclst_cnt:
 	jmp	@@7
 @@6:	pop	edi ecx
 	cmp	esi,ecx
-	jb	@@0
+	jb	apply_fixups
 	ret
 @@4:	push	si
 	mov	si,cx
